@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Exe River Sports</string>
+    <string name="home">Home</string>
+    <string name="btnHome">Home</string>
+    <string name="welcome_to_ers">Welcome to ERS</string>
+    <string name="press_enter_to_continue">Press Enter to continue!</string>
+    <string name="welcome">Welcome</string>
+    <string name="sports">Sports</string>
+    <string name="match_arsenal_vs_tottenham" />
+    <string name="select_ticket" />
+
+
+</resources>
