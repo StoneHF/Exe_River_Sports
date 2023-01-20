@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class MainActivityUserPage extends AppCompatActivity {
 
     private Button btnHome;
+    private Button btnDeleteAccount;
 
     private TextView nameTextView;
     private TextView emailTextView;
@@ -23,6 +24,30 @@ public class MainActivityUserPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_user_page);
+
+
+
+        btnDeleteAccount = (Button) findViewById(R.id.btnDeleteAccount);
+        btnDeleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int memberId = getSharedPreferences("siteMembers", MODE_PRIVATE).getInt("member_id", 0);
+                if (memberId == 0) {
+                    Toast.makeText(MainActivityUserPage.this, "No member ID found", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                myERSdb.delete("tbl_members", "member_id = ?", new String[]{String.valueOf(memberId)});
+                getSharedPreferences("siteMembers", MODE_PRIVATE)
+                        .edit()
+                        .remove("member_id")
+                        .apply();
+                Toast.makeText(MainActivityUserPage.this, "Account deleted successfully", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(MainActivityUserPage.this, MainActivity2.class));
+
+
+            }
+        });
 
         btnHome = (Button) findViewById(R.id.btnHome);
         btnHome.setOnClickListener(new View.OnClickListener() {
