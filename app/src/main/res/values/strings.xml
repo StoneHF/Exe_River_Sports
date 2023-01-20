@@ -13,6 +13,10 @@
     <string name="ers">ERS</string>
     <string name="your_tickets">Your Tickets</string>
     <string name="arsenal_vs_tottenahm">Arsenal VS Tottenahm</string>
+    <string name="premium_ticket">Premium Ticket</string>
+    <string name="childs_ticket">Childs Ticket</string>
+    <string name="_25_00">£25.00</string>
+    <string name="_50_00">£50.00</string>
 
     <string-array name="ticket_quantity_array">
         <item>0</item>
