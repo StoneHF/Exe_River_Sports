@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,10 +49,23 @@ public class MainActivity extends AppCompatActivity {
         String UserEmailIn;
         String UserPasswordIn;
 
-
-        UserNameIn = getIntent().getExtras().getString("ValueFirstName");
-        UserEmailIn = getIntent().getExtras().getString("ValueEmail");
-        UserPasswordIn = getIntent().getExtras().getString("ValuePassword");
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                UserNameIn = bundle.getString("ValueFirstName");
+                UserEmailIn = bundle.getString("ValueEmail");
+                UserPasswordIn = bundle.getString("ValuePassword");
+            } else {
+                UserNameIn = "";
+                UserEmailIn = "";
+                UserPasswordIn = "";
+            }
+        } else {
+            UserNameIn = "";
+            UserEmailIn = "";
+            UserPasswordIn = "";
+        }
 
         // nameview.setText(InputString);
 
@@ -62,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         createDatabase(UserNameIn,UserEmailIn,UserPasswordIn);
 
     }
+
+
 
     // a is for argument
     public void createDatabase(String aUserNameIn,String aUserEmailIn,String aUserPasswordIn){

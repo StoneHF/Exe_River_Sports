@@ -53,7 +53,7 @@ public class MainActivityUserPage extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivityUserPage.this, MainActivity2.class);
+                Intent intent = new Intent(MainActivityUserPage.this, MainActivity.class);
                 startActivity(intent);
             }
         });
