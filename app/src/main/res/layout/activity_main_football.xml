@@ -91,12 +91,12 @@
 
 
             <Button
-                android:id="@+id/button_arsenal_vs_spurs"
+                android:id="@+id/btnOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="1dp"
-                android:text="More details" />
+                android:text="Order Tickets" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

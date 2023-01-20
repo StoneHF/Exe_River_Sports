@@ -8,6 +8,37 @@
     <string name="sports">Sports</string>
     <string name="match_arsenal_vs_tottenham" />
     <string name="select_ticket" />
+    <string name="whatever_this_is">Whatever this is</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="ers">ERS</string>
+    <string name="your_tickets">Your Tickets</string>
+    <string name="arsenal_vs_tottenahm">Arsenal VS Tottenahm</string>
+
+    <string-array name="ticket_quantity_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="ticket_quantity_array_Adult">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="ticket_quantity_array_Child">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+
 
 
 </resources>

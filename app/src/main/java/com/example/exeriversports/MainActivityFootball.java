@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainActivityFootball extends AppCompatActivity {
 
     private Button btnHome;
+    private Button btnOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +25,19 @@ public class MainActivityFootball extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnOrder = (Button)  findViewById(R.id.btnOrder);
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivityFootball.this, MainActivityTicketOrder.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
     }
 }
