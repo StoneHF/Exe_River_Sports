@@ -9,7 +9,7 @@ abstract class Ticket {
 
 class AdultTicket extends Ticket {
     public AdultTicket() {
-        price = 80;
+        price = 50;
     }
     @Override
     public double getPrice() {

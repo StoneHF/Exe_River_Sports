@@ -149,44 +149,64 @@ public class MainActivity extends AppCompatActivity {
         }
         LoginButton = (Button) findViewById(R.id.btnLogin);
         LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // get the email and password entered by the user
-                EditText etLoginEmail = (EditText) findViewById(R.id.etLoginEmail);
-                EditText etLoginPassword = (EditText) findViewById(R.id.etLoginPassword);
-                String email = etLoginEmail.getText().toString();
-                String password = etLoginPassword.getText().toString();
+                                           @Override
+                                           public void onClick(View view) {
+                                               // get the email and password entered by the user
+                                               EditText etLoginEmail = (EditText) findViewById(R.id.etLoginEmail);
+                                               EditText etLoginPassword = (EditText) findViewById(R.id.etLoginPassword);
+                                               String email = etLoginEmail.getText().toString();
+                                               String password = etLoginPassword.getText().toString();
 
-                // query the database to check if a matching record exists
-                SQLiteDatabase myERSdb = openOrCreateDatabase("siteMembers", MODE_PRIVATE, null);
-                Cursor cursor = myERSdb.rawQuery("SELECT * FROM tbl_members WHERE fldEmail = ? AND fldPassword = ?", new String[] {email, password});
+                                               // query the database to check if a matching record exists
+                                               SQLiteDatabase myERSdb = openOrCreateDatabase("siteMembers", MODE_PRIVATE, null);
+                                               Cursor cursor = myERSdb.rawQuery("SELECT * FROM tbl_members WHERE fldEmail = ? AND fldPassword = ?", new String[] {email, password});
 
-                if (cursor.moveToFirst()) {
-                    // login successful
-                    int member_id = cursor.getInt(0); // assuming the member_id column is the first column
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt("member_id", member_id);
-                    editor.apply();
-                    // navigate to the MainActivity2
-                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                    startActivity(intent);
-                } else {
-                    // login failed
-                    Toast.makeText(MainActivity.this, "Incorrect email or password", Toast.LENGTH_LONG).show();
-                }
-                cursor.close();
-
-
-    }
+                                               if (cursor.moveToFirst()) {
+                                                   // login successful
+                                                   int member_id = cursor.getInt(0); // assuming the member_id column is the first column
+                                                   SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                   editor.putInt("member_id", member_id);
+                                                   editor.apply();
+                                                   // navigate to the MainActivity2
+                                                   Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                                   startActivity(intent);
+                                               } else {
+                                                   // login failed
+                                                   Toast.makeText(MainActivity.this, "Incorrect email or password", Toast.LENGTH_LONG).show();
+                                               }
+                                               cursor.close();
 
 
+                                           }
 
 
-                                                    }
-                        );
+
+
+                                       }
+        );
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -81,6 +81,7 @@ public class MainActivityTicketOrder extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnHome = (Button) findViewById(R.id.btnHome);
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override

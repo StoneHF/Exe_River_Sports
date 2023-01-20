@@ -52,3 +52,42 @@ public class MainActivitySignUp extends AppCompatActivity {
     }
 
 }
+/*
+    private boolean isValidForm() {
+        boolean isValid = true;
+
+        //validating name
+        if(!isValidName(FirstName.getText().toString())) {
+            FirstName.setError("Invalid name format");
+            isValid = false;
+        }
+
+        //validating email
+        if(!isValidEmail(Email.getText().toString())) {
+            Email.setError("Invalid email format");
+            isValid = false;
+        }
+
+        //validating password
+        if(!isValidPassword(Password.getText().toString())) {
+            Password.setError("Password must be at least 6 characters");
+            isValid = false;
+        }
+        return isValid;
+    }
+
+    private boolean isValidName(String name) {
+        //put your name validation here
+        return true;
+    }
+
+    private boolean isValidEmail(String email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private boolean isValidPassword(String password) {
+        return password.length() >= 6;
+    }
+
+}
+*/

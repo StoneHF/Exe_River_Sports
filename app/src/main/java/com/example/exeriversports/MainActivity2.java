@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class MainActivity2 extends AppCompatActivity {
     private Button ViewButton;
     private Button LogoutButton;
+    private Button ProfileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,16 @@ public class MainActivity2 extends AppCompatActivity {
         TextView memberIdTextView = (TextView) findViewById(R.id.member_id_textview);
         memberIdTextView.setText("Logged in as member id " + member_id);
 
+
+
+        ProfileButton = (Button) findViewById(R.id.btnProfile);
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity2.this, MainActivityUserPage.class);
+                startActivity(myIntent);
+            }
+        });
 
 
 
@@ -53,3 +64,4 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 }
+
