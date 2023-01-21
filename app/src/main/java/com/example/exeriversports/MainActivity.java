@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_members (member_id INT(5)," +
                     " fldFName VARCHAR, fldEmail VARCHAR, fldPassword VARCHAR) ");
 
+             /*
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_OrderedTickets (fldTicketID INT(5)," +
                     "member_ID INT) ");
 
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     " fldLocation VARCHAR, fldDate VARCHAR, fldSportID INT)");
 
 
-            /*
+
             myDB.execSQL("INSERT INTO tbl_members (member_id, fldFName, fldEmail, fldPassword)" +
                     "VALUES (00001, 'Harry', 'HLid@email.com, password')");
             */
