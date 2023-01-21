@@ -1,7 +1,5 @@
 package com.example.exeriversports;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -12,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button SignupButton;
@@ -162,40 +162,46 @@ public class MainActivity extends AppCompatActivity {
         }
         LoginButton = (Button) findViewById(R.id.btnLogin);
         LoginButton.setOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View view) {
-                                               // get the email and password entered by the user
-                                               EditText etLoginEmail = (EditText) findViewById(R.id.etLoginEmail);
-                                               EditText etLoginPassword = (EditText) findViewById(R.id.etLoginPassword);
-                                               String email = etLoginEmail.getText().toString();
-                                               String password = etLoginPassword.getText().toString();
+            @Override
+            public void onClick(View view) {
+                // get the email and password entered by the user
+                EditText etLoginEmail = (EditText) findViewById(R.id.etLoginEmail);
+                EditText etLoginPassword = (EditText) findViewById(R.id.etLoginPassword);
+                String email = etLoginEmail.getText().toString();
+                String password = etLoginPassword.getText().toString();
 
-                                               // query the database to check if a matching record exists
-                                               SQLiteDatabase myERSdb = openOrCreateDatabase("siteMembers", MODE_PRIVATE, null);
-                                               Cursor cursor = myERSdb.rawQuery("SELECT * FROM tbl_members WHERE fldEmail = ? AND fldPassword = ?", new String[] {email, password});
+                // check if email and password fields are not empty
+                if(email.isEmpty() || password.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Please enter email and password", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
-                                               if (cursor.moveToFirst()) {
-                                                   // login successful
-                                                   int member_id = cursor.getInt(0); // assuming the member_id column is the first column
-                                                   SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                   editor.putInt("member_id", member_id);
-                                                   editor.apply();
-                                                   // navigate to the MainActivity2
-                                                   Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                                                   startActivity(intent);
-                                               } else {
-                                                   // login failed
-                                                   Toast.makeText(MainActivity.this, "Incorrect email or password", Toast.LENGTH_LONG).show();
-                                               }
-                                               cursor.close();
+                // query the database to check if a matching record exists
+                SQLiteDatabase myERSdb = openOrCreateDatabase("siteMembers", MODE_PRIVATE, null);
+                Cursor cursor = myERSdb.rawQuery("SELECT * FROM tbl_members WHERE fldEmail = ? AND fldPassword = ?", new String[] {email, password});
+
+                if (cursor.moveToFirst()) {
+                    // login successful
+                    int member_id = cursor.getInt(0); // assuming the member_id column is the first column
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("member_id", member_id);
+                    editor.apply();
+                    // navigate to the MainActivity2
+                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                    startActivity(intent);
+                } else {
+                    // login failed
+                    Toast.makeText(MainActivity.this, "Incorrect email or password", Toast.LENGTH_LONG).show();
+                }
+                cursor.close();
 
 
-                                           }
+            }
 
 
 
 
-                                       }
+        }
         );
     }
 

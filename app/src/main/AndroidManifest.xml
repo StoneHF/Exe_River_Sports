@@ -13,10 +13,6 @@
         android:theme="@style/Theme.ExeRiverSports"
         tools:targetApi="31">
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDhRWSQszKcWHkSUQhlADsMj2HZr0RDuGk" />
-
         <activity
             android:name=".MainActivityUserPage"
             android:exported="false">
