@@ -85,35 +85,37 @@
 
         <TextView
             android:id="@+id/adult_ticket_price"
-            android:layout_width="64dp"
-            android:layout_height="65dp"
+            android:layout_width="226dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="16dp"
             android:text="@string/_50_00"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.582"
+            app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.404" />
+            app:layout_constraintVertical_bias="0.343" />
 
         <TextView
             android:id="@+id/child_ticket_price"
-            android:layout_width="64dp"
-            android:layout_height="63dp"
+            android:layout_width="222dp"
+            android:layout_height="42dp"
             android:text="@string/_25_00"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/adult_ticket_price"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="@+id/adult_ticket_price"
             app:layout_constraintTop_toBottomOf="@id/adult_ticket_price"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintVertical_bias="0.433" />
 
         <Spinner
             android:id="@+id/spinnerAdult"
@@ -176,35 +178,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.067" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="128dp"
-            android:layout_height="58dp"
-            android:text="@string/premium_ticket"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/adult_ticket_price"
-            app:layout_constraintHorizontal_bias="0.235"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.425" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="128dp"
-            android:layout_height="69dp"
-            android:text="@string/childs_ticket"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/child_ticket_price"
-            app:layout_constraintHorizontal_bias="0.235"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
-            app:layout_constraintVertical_bias="0.274" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -220,6 +193,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_view"
         app:layout_constraintVertical_bias="0.364" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

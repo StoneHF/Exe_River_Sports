@@ -1,7 +1,5 @@
 package com.example.exeriversports;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +8,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivityTicketOrder extends AppCompatActivity {
     private Button PurchaseButton;
@@ -31,8 +31,9 @@ public class MainActivityTicketOrder extends AppCompatActivity {
         TextView adultTicketPriceTextView = (TextView) findViewById(R.id.adult_ticket_price);
         TextView childTicketPriceTextView = (TextView) findViewById(R.id.child_ticket_price);
 
-        adultTicketPriceTextView.setText("£" + Double.toString(adultTicketPrice));
-        childTicketPriceTextView.setText("£" + Double.toString(childTicketPrice));
+        adultTicketPriceTextView.setText(adultTicket.getTicketInformation());
+        childTicketPriceTextView.setText(childTicket.getTicketInformation());
+
 
         Spinner spinnerA = (Spinner) findViewById(R.id.spinnerAdult);
         Spinner spinnerC = (Spinner) findViewById(R.id.spinnerChild);
