@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             UserNameIn = "";
             UserEmailIn = "";
             UserPasswordIn = "";
+            createDatabase(UserNameIn,UserEmailIn,UserPasswordIn);
         }
 
         // nameview.setText(InputString);

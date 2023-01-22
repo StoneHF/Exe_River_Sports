@@ -35,6 +35,8 @@ public class MainActivityTicketOrder extends AppCompatActivity {
         childTicketPriceTextView.setText(childTicket.getTicketInformation());
 
 
+
+
         Spinner spinnerA = (Spinner) findViewById(R.id.spinnerAdult);
         Spinner spinnerC = (Spinner) findViewById(R.id.spinnerChild);
 
@@ -93,3 +95,6 @@ public class MainActivityTicketOrder extends AppCompatActivity {
         });
     }
 }
+
+
+
