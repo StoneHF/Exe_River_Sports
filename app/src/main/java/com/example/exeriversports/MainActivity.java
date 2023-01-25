@@ -84,6 +84,19 @@ public class MainActivity extends AppCompatActivity {
 
             SQLiteDatabase myERSdb = this.openOrCreateDatabase("siteMembers",MODE_PRIVATE,null);
 
+
+
+            // adds validation to the user data entry
+            if(aUserNameIn.length()>16) {
+                nameview.setText("Username can be no longer than 16");
+                return;
+            }
+            if(aUserPasswordIn.length()<6) {
+                nameview.setText("Password should be at least 6 characters");
+                return;
+            }
+
+            String truncatedName = aUserNameIn.substring(0, Math.min(aUserNameIn.length(), 16));
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_members (member_id INT(5)," +
                     " fldFName VARCHAR, fldEmail VARCHAR, fldPassword VARCHAR) ");
 
