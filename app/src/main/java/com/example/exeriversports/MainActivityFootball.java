@@ -7,10 +7,18 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivityFootball extends AppCompatActivity {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MainActivityFootball extends AppCompatActivity implements OnMapReadyCallback {
 
     private Button btnHome;
     private Button btnOrder;
+    private Button btnMap;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +34,7 @@ public class MainActivityFootball extends AppCompatActivity {
             }
         });
 
-        btnOrder = (Button)  findViewById(R.id.btnOrder);
+        btnOrder = (Button) findViewById(R.id.btnOrder);
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,9 +43,22 @@ public class MainActivityFootball extends AppCompatActivity {
             }
         });
 
+/*
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapViewEmirates);
+        mapFragment.getMapAsync(this);
 
+ */
+    }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
-
+        // Add a marker for the location of the sports match and move the camera
+        LatLng emiratesStadium = new LatLng(51.5548, -0.1084);
+        mMap.addMarker(new MarkerOptions().position(emiratesStadium).title("EmiratesStadium"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(emiratesStadium, 15));
     }
 }
+
