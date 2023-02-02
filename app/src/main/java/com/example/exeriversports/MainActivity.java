@@ -87,14 +87,13 @@ public class MainActivity extends AppCompatActivity {
 
 
             // adds validation to the user data entry
-            if(aUserNameIn.length()>16) {
-                nameview.setText("Username can be no longer than 16");
+             if(aUserNameIn.length()>30) {
+                nameview.setText("Username can be no longer than 30");
                 return;
             }
-            if(aUserPasswordIn.length()<6) {
-                nameview.setText("Password should be at least 6 characters");
-                return;
-            }
+
+
+
 
             String truncatedName = aUserNameIn.substring(0, Math.min(aUserNameIn.length(), 16));
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_members (member_id INT(5)," +
@@ -103,17 +102,11 @@ public class MainActivity extends AppCompatActivity {
              /*
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_OrderedTickets (fldTicketID INT(5)," +
                     "member_ID INT) ");
-
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_sports(fldSportID INT(5)," +
                     " fldSportName VARCHAR) ");
-
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_matches (fldMatchID INT(5)," +
                     " fldLocation VARCHAR, fldDate VARCHAR, fldSportID INT)");
 
-
-
-            myDB.execSQL("INSERT INTO tbl_members (member_id, fldFName, fldEmail, fldPassword)" +
-                    "VALUES (00001, 'Harry', 'HLid@email.com, password')");
             */
 
             // Add a new record into database
@@ -130,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             myERSdb.execSQL("INSERT INTO tbl_members (member_id, fldFname, fldEmail, fldPassword)" +
                     "VALUES ("+rowCount+",'"+aUserNameIn+"', '"+aUserEmailIn+"', '"+aUserPasswordIn+"' )");
 
-            nameview.setText(" New Record Added");
+            nameview.setText(" ");
 
 
             SQLString = "SELECT * FROM tbl_members";

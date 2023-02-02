@@ -1,6 +1,7 @@
 package com.example.exeriversports;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivityTicketOrder extends AppCompatActivity {
     private Button PurchaseButton;
     private Button btnHome;
+    private Button LogoutButton;
+    private Button ProfileButton;
 
     double totalCost = 0;
 
@@ -85,12 +88,38 @@ public class MainActivityTicketOrder extends AppCompatActivity {
             }
         });
 
+        // takes user to home page
         btnHome = (Button) findViewById(R.id.btnHome);
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivityTicketOrder.this, MainActivity2.class);
                 startActivity(intent);
+            }
+        });
+
+        // takes user to profile page
+        ProfileButton = (Button) findViewById(R.id.btnProfile);
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivityTicketOrder.this, MainActivityUserPage.class);
+                startActivity(myIntent);
+            }
+        });
+
+        // Logs the user out and clears shared preferences
+        LogoutButton = (Button) findViewById(R.id.btnLogout);
+        LogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("siteMembers", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(MainActivityTicketOrder.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
