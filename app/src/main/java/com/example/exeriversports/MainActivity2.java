@@ -1,15 +1,13 @@
 package com.example.exeriversports;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity2 extends AppCompatActivity {
     private Button ViewButton;
@@ -24,7 +22,7 @@ public class MainActivity2 extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("siteMembers", MODE_PRIVATE);
         int member_id = sharedPreferences.getInt("member_id", 0);
         TextView memberIdTextView = (TextView) findViewById(R.id.member_id_textview);
-        memberIdTextView.setText("Logged in as member id " + member_id);
+        memberIdTextView.setText("Hi member " + member_id);
 
 
 
