@@ -26,49 +26,63 @@ public class MainActivityUserPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_user_page);
 
-
-
+        // Initialize the delete account button
         btnDeleteAccount = (Button) findViewById(R.id.btnDeleteAccount);
+        // Set a click listener for the delete account button
         btnDeleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Get the member ID from shared preferences
                 int memberId = getSharedPreferences("siteMembers", MODE_PRIVATE).getInt("member_id", 0);
+                // Check if the member ID is found
                 if (memberId == 0) {
+                    // Display a toast message indicating the lack of member ID
                     Toast.makeText(MainActivityUserPage.this, "No member ID found", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // Delete the member from the database
                 myERSdb.delete("tbl_members", "member_id = ?", new String[]{String.valueOf(memberId)});
+                // Remove the member ID from shared preferences
                 getSharedPreferences("siteMembers", MODE_PRIVATE)
                         .edit()
                         .remove("member_id")
                         .apply();
+                // Display a toast message indicating the success of the operation
                 Toast.makeText(MainActivityUserPage.this, "Account deleted successfully", Toast.LENGTH_SHORT).show();
+                // Close the current activity
                 finish();
+                // Start the MainActivity
                 startActivity(new Intent(MainActivityUserPage.this, MainActivity.class));
-
-
             }
         });
 
+        // Initialize the home button
         btnHome = (Button) findViewById(R.id.btnHome);
+        // Set a click listener for the home button
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Start the MainActivity2
                 Intent intent = new Intent(MainActivityUserPage.this, MainActivity2.class);
                 startActivity(intent);
             }
         });
 
+        // Initialize the logout button
         LogoutButton = (Button) findViewById(R.id.btnLogout);
+        // Set a click listener for the logout button
         LogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Clear the shared preferences
                 SharedPreferences sharedPreferences = getSharedPreferences("siteMembers", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
                 editor.apply();
+                // Start the MainActivity
                 Intent intent = new Intent(MainActivityUserPage.this, MainActivity.class);
                 startActivity(intent);
+                // Close the current activity
                 finish();
             }
         });

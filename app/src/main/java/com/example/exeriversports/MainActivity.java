@@ -23,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Call the superclass's onCreate method
         super.onCreate(savedInstanceState);
+        // Set the activity's content view
         setContentView(R.layout.activity_main);
+        // Initialize shared preferences
         sharedPreferences = getSharedPreferences("siteMembers", MODE_PRIVATE);
 
-
+        // Get the Signup button and set an onClickListener
         SignupButton = (Button) findViewById(R.id.btnSignupForm);
         SignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,14 +40,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ValueFirstName
-        // ValueEmail
-        // ValuePassword
-        // tvResultText
+        // Initialize the nameview TextView
+        nameview = (TextView) findViewById(R.id.tvResults);
 
-        nameview =(TextView)findViewById(R.id.tvResults);
-
-        // Display the string
+        // Get values for UserNameIn, UserEmailIn, and UserPasswordIn
         String UserNameIn;
         String UserEmailIn;
         String UserPasswordIn;
@@ -65,18 +64,13 @@ public class MainActivity extends AppCompatActivity {
             UserNameIn = "";
             UserEmailIn = "";
             UserPasswordIn = "";
-            createDatabase(UserNameIn,UserEmailIn,UserPasswordIn);
         }
 
-        // nameview.setText(InputString);
-
-        //create a database call
+        // Create a database
         createDatabase(UserNameIn,UserEmailIn,UserPasswordIn);
-
     }
 
-
-
+    // Function to create the database
     // a is for argument
     public void createDatabase(String aUserNameIn,String aUserEmailIn,String aUserPasswordIn){
         try{
@@ -91,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 nameview.setText("Username can be no longer than 30");
                 return;
             }
-
-
 
 
             String truncatedName = aUserNameIn.substring(0, Math.min(aUserNameIn.length(), 16));
@@ -155,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), SqlResult,
                     Toast.LENGTH_LONG).show();
 
-
             myCursor.close();
 
             // myERSdb.execSQL("DROP TABLE IF EXISTS siteMembers");
@@ -203,16 +194,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 cursor.close();
 
-
             }
-
-
-
-
-        }
-        );
+        });
     }
-
 }
 
 

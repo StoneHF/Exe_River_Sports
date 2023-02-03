@@ -17,33 +17,42 @@ public class MainActivitySignUp extends AppCompatActivity {
 
 
     @Override
+    // Activity for sign up screen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_sign_up);
 
         //  etFirstName  & etEmail & etTextPassword
-
+        // Initialize FirstName, Email, Password EditTexts
         FirstName = (EditText) findViewById(R.id.etFirstName);
         Email = (EditText) findViewById(R.id.etEmail);
         Password = (EditText) findViewById(R.id.etPassword);
+
+        // Initialize SubmitButton
         SubmitButton = (Button) findViewById(R.id.btnSubmit);
 
+        // Set OnClickListener for SubmitButton
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Check if the form is valid
                 if (!isValidForm()) {
                     return;
                 }
+                // Get the values entered by the user
                 String ArgFirstName = FirstName.getText().toString();
                 String ArgEmail = Email.getText().toString();
                 String ArgPassword = Password.getText().toString();
+                // Start the next activity and pass the values to it
                 goToNextActivity(ArgFirstName, ArgEmail, ArgPassword);
             }
         });
     }
 
+    // Function to start the next activity and pass the values to it
     public void goToNextActivity(String enteredFirstName, String enteredEmail, String enteredPassword) {
         Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        // Pass values to the next activity using putExtra
         myIntent.putExtra("ValueFirstName", enteredFirstName);
         myIntent.putExtra("ValueEmail", enteredEmail);
         myIntent.putExtra("ValuePassword", enteredPassword);
