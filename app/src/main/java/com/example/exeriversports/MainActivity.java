@@ -23,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Call the superclass's onCreate method
         super.onCreate(savedInstanceState);
+        // Set the activity's content view
         setContentView(R.layout.activity_main);
+        // Initialize shared preferences
         sharedPreferences = getSharedPreferences("siteMembers", MODE_PRIVATE);
 
-
+        // Get the Signup button and set an onClickListener
         SignupButton = (Button) findViewById(R.id.btnSignupForm);
         SignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,14 +40,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ValueFirstName
-        // ValueEmail
-        // ValuePassword
-        // tvResultText
+        // Initialize the nameview TextView
+        nameview = (TextView) findViewById(R.id.tvResults);
 
-        nameview =(TextView)findViewById(R.id.tvResults);
-
-        // Display the string
+        // Get values for UserNameIn, UserEmailIn, and UserPasswordIn
         String UserNameIn;
         String UserEmailIn;
         String UserPasswordIn;
@@ -65,18 +64,13 @@ public class MainActivity extends AppCompatActivity {
             UserNameIn = "";
             UserEmailIn = "";
             UserPasswordIn = "";
-            createDatabase(UserNameIn,UserEmailIn,UserPasswordIn);
         }
 
-        // nameview.setText(InputString);
-
-        //create a database call
+        // Create a database
         createDatabase(UserNameIn,UserEmailIn,UserPasswordIn);
-
     }
 
-
-
+    // Function to create the database
     // a is for argument
     public void createDatabase(String aUserNameIn,String aUserEmailIn,String aUserPasswordIn){
         try{
@@ -87,14 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
 
             // adds validation to the user data entry
-            if(aUserNameIn.length()>16) {
-                nameview.setText("Username can be no longer than 16");
+             if(aUserNameIn.length()>30) {
+                nameview.setText("Username can be no longer than 30");
                 return;
             }
-            if(aUserPasswordIn.length()<6) {
-                nameview.setText("Password should be at least 6 characters");
-                return;
-            }
+
 
             String truncatedName = aUserNameIn.substring(0, Math.min(aUserNameIn.length(), 16));
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_members (member_id INT(5)," +
@@ -103,17 +94,11 @@ public class MainActivity extends AppCompatActivity {
              /*
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_OrderedTickets (fldTicketID INT(5)," +
                     "member_ID INT) ");
-
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_sports(fldSportID INT(5)," +
                     " fldSportName VARCHAR) ");
-
             myERSdb.execSQL("CREATE TABLE IF NOT EXISTS tbl_matches (fldMatchID INT(5)," +
                     " fldLocation VARCHAR, fldDate VARCHAR, fldSportID INT)");
 
-
-
-            myDB.execSQL("INSERT INTO tbl_members (member_id, fldFName, fldEmail, fldPassword)" +
-                    "VALUES (00001, 'Harry', 'HLid@email.com, password')");
             */
 
             // Add a new record into database
@@ -130,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             myERSdb.execSQL("INSERT INTO tbl_members (member_id, fldFname, fldEmail, fldPassword)" +
                     "VALUES ("+rowCount+",'"+aUserNameIn+"', '"+aUserEmailIn+"', '"+aUserPasswordIn+"' )");
 
-            nameview.setText(" New Record Added");
+            nameview.setText(" ");
 
 
             SQLString = "SELECT * FROM tbl_members";
@@ -161,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
             String SqlResult = mySB.toString();
             Toast.makeText(getApplicationContext(), SqlResult,
                     Toast.LENGTH_LONG).show();
-
 
             myCursor.close();
 
@@ -210,16 +194,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 cursor.close();
 
-
             }
-
-
-
-
-        }
-        );
+        });
     }
-
 }
 
 

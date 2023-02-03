@@ -9,13 +9,14 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#1E88E5"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -87,18 +88,18 @@
         android:id="@+id/rugby_button"
         android:layout_width="162dp"
         android:layout_height="109dp"
-        android:layout_marginTop="32dp"
-        android:text="Rugby"
+        android:layout_marginTop="150dp"
+        android:text="Rugby (under construction)"
         app:layout_constraintBottom_toTopOf="@+id/cricket_button"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
         android:id="@+id/cricket_button"
         android:layout_width="161dp"
         android:layout_height="109dp"
-        android:text="Cricket"
+        android:text="Cricket (under construction)"
         app:layout_constraintBottom_toTopOf="@+id/football_button"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +119,7 @@
         android:id="@+id/tennis_button"
         android:layout_width="162dp"
         android:layout_height="109dp"
-        android:text="Tennis"
+        android:text="Tennis (under construction)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
